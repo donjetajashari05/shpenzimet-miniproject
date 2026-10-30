@@ -1,0 +1,45 @@
+<form class="forma" (submit)="ruaj($event)">
+  <h2>Shpenzim i ri</h2>
+
+  <label>
+    Përshkrimi
+    <input [formField]="forma.pershkrimi" placeholder="p.sh. Kafe" />
+  </label>
+  @if (forma.pershkrimi().touched() && forma.pershkrimi().invalid()) {
+    @for (g of forma.pershkrimi().errors(); track g) { <small class="gabim">{{ g.message }}</small> }
+  }
+
+  <label>
+    Shuma (€)
+    <input type="number" step="0.01" [formField]="forma.shuma" />
+  </label>
+  @if (forma.shuma().touched() && forma.shuma().invalid()) {
+    @for (g of forma.shuma().errors(); track g) { <small class="gabim">{{ g.message }}</small> }
+  }
+
+  <label>
+    Kategoria
+    <select [formField]="forma.kategoriaId">
+      <option value="">– Zgjidh –</option>
+      @for (k of store.kategorite(); track k.id) {
+        <option [value]="k.id">{{ k.emri }}</option>
+      }
+    </select>
+  </label>
+  @if (forma.kategoriaId().touched() && forma.kategoriaId().invalid()) {
+    @for (g of forma.kategoriaId().errors(); track g) { <small class="gabim">{{ g.message }}</small> }
+  }
+
+  <label>
+    Data (opsionale – bosh = sot)
+    <input type="date" [formField]="forma.data" />
+  </label>
+@if (store.gabimi(); as g) {
+  <p class="gabim">{{ g }}</p>
+}
+  <div class="veprimet">
+    <button type="submit" [disabled]="forma().invalid()">Ruaj</button>
+    <button type="button" class="dytesor" (click)="pastro()">Pastro</button>
+    <a routerLink="/shpenzimet">Anulo</a>
+  </div>
+</form>

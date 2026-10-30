@@ -1,0 +1,14 @@
+<article class="karta">
+  <span class="etiketa" [style.background]="shpenzimi().kategoriaNgjyra">
+    {{ shpenzimi().kategoriaEmri }}
+  </span>
+
+  <div class="info">
+   <a [routerLink]="['/shpenzimet', shpenzimi().id]"><strong>{{ shpenzimi().pershkrimi }}</strong></a>
+    <small>{{ shpenzimi().data | date: 'dd.MM.yyyy' }}</small>
+  </div>
+
+  <span class="shuma">{{ shpenzimi().shuma | currency: 'EUR' }}</span>
+
+  <button type="button" (click)="kerkoFshirjen()">Fshij</button>
+</article>

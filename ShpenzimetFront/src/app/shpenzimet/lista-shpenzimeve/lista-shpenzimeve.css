@@ -1,0 +1,6 @@
+.filtrat { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.filtrat input { padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; }
+.butonat { display: flex; flex-wrap: wrap; gap: 6px; }
+.butonat button { background: white; border: 2px solid #d1d5db; border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+.butonat button.aktiv { background: #1f2937; color: white; }
+.totali { font-size: 1.1rem; }

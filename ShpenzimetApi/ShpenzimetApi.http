@@ -1,0 +1,6 @@
+@ShpenzimetApi_HostAddress = http://localhost:5171
+
+GET {{ShpenzimetApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

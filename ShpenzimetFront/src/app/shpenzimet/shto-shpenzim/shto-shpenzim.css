@@ -1,0 +1,8 @@
+.forma { display: flex; flex-direction: column; gap: 10px; max-width: 420px; margin: 0 auto; font-family: system-ui, sans-serif; }
+label { display: flex; flex-direction: column; gap: 4px; font-size: 0.9rem; color: #374151; }
+input, select { padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem; }
+.gabim { color: #dc2626; margin-top: -6px; }
+.veprimet { display: flex; gap: 8px; align-items: center; }
+button { padding: 8px 16px; border: none; border-radius: 6px; background: #2563eb; color: white; cursor: pointer; }
+button:disabled { background: #9ca3af; cursor: not-allowed; }
+button.dytesor { background: #e5e7eb; color: #1f2937; }

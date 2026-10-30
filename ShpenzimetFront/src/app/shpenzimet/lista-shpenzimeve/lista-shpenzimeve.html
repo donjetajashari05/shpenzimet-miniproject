@@ -1,0 +1,47 @@
+<section class="lista">
+  <h2>Shpenzimet e mia</h2>
+
+  @if (store.dukeNgarkuar()) {
+    <p>Duke u ngarkuar...</p>
+  }
+  @if (store.gabimiNgarkimit(); as g) {
+    <p class="gabim">{{ g }}</p>
+  }
+  @if (store.gabimi(); as g) {
+    <p class="gabim">{{ g }}</p>
+  }
+
+  <div class="filtrat">
+    <input
+      #fushaKerkimit
+      placeholder="Kërko në përshkrim..."
+      [value]="kerko()"
+      (input)="kerko.set(fushaKerkimit.value)"
+    />
+
+    <div class="butonat">
+      <button type="button" [class.aktiv]="filtriKategoria() === null"
+              (click)="filtriKategoria.set(null)">Të gjitha</button>
+      @for (k of kategorite(); track k.id) {
+        <button type="button" [class.aktiv]="filtriKategoria() === k.id"
+                [style.border-color]="k.ngjyra"
+                (click)="filtriKategoria.set(k.id)">{{ k.emri }}</button>
+      }
+    </div>
+  </div>
+
+  <p class="totali">
+    {{ teFiltruarat().length }} shpenzime · Totali: <strong>{{ totali() | currency: 'EUR' }}</strong>
+  </p>
+
+  @for (s of teFiltruarat(); track s.id) {
+    <div class="rreshti" [class.i-madh]="s.shuma > kufiriIMadh">
+      <app-karta-shpenzimit [shpenzimi]="s" (fshij)="fshijShpenzimin($event)" />
+    </div>
+  } @empty {
+    @if (!store.dukeNgarkuar()) {
+      <p class="bosh">Asnjë shpenzim nuk përputhet me filtrat.</p>
+      <button type="button" (click)="rikthe()">Pastro filtrat</button>
+    }
+  }
+</section>
